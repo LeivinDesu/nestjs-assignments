@@ -18,7 +18,6 @@ export class AppController {
   }
 
   //Assignment 2: Prime Number Checker
-
   @Get('prime/:number')
   checkPrime(@Param('number', ParseIntPipe)number: number){
       const isPrime = this.isPrime(number);
@@ -33,10 +32,19 @@ export class AppController {
         return true};
       if(num % 2 == 0 || num % 3 == 0) {
         return false};
-        
+
       for (let i = 5; i * i <= num; i += 6) {
       if (num % i === 0 || num % (i + 2) === 0) return false;
       }
       return true;
+  }
+
+  //Assginment 3: Factorial Calculator
+  @Get('factorial/:number')
+  factorial(@Param('number', ParseIntPipe)number: number){
+     let answer = 1;
+     for(let i = 1; i <= number; i++){
+      answer = answer * i;
+     }return answer;
   }
 }
